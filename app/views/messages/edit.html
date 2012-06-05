@@ -1,0 +1,25 @@
+{{> header}}
+
+<form action="/messages/send", method="post">
+  <label for="message[firstName]">First Name</label>
+  <input type="text" name="message[firstName]" value="{{#if message}}{{message.firstName}}{{/if}}" />
+
+  <br />
+
+  <label for="message[lastName]">Last Name</label>
+  <input type="text" name="message[firstName]" value="{{#if message}}{{message.firstName}}{{/if}}" />
+
+  <br />
+
+  <label for="message[phoneNumber]">Phone Number</label>
+  <input type="text" name="message[phoneNumber]" value="{{#if message}}{{message.phoneNumber}}{{/if}}" />
+
+  <br />
+
+  <label for="message[message]">Message</label>
+  <textarea name="message[message]">{{#if message}}{{message.message}}{{/if}}</textarea>
+
+  <button class="btn btn-primary">Send</button>
+</form>
+
+{{> footer}}
