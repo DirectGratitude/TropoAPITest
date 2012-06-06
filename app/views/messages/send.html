@@ -1,5 +1,9 @@
 {{> header}}
 
+<p>Please fill the form to send a text message.</p>
+
+<br />
+
 <form action="/messages/send", method="post">
   <label for="message[firstName]">First Name</label>
   <input type="text" name="message[firstName]" value="{{#if message}}{{message.firstName}}{{/if}}" />
@@ -19,7 +23,10 @@
   <label for="message[message]">Message</label>
   <textarea name="message[message]">{{#if message}}{{message.message}}{{/if}}</textarea>
 
+  <br />
+
   <button class="btn btn-primary">Send</button>
+  <small>All fields are mandatory</small>
 </form>
 
 {{> footer}}
