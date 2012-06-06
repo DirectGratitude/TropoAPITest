@@ -22,9 +22,7 @@ var MessageController = createController({
 
     var json = TropoJSON(tropo);
 
-
-    res.json(json);
-
+    res.json(json, 200);
 
 //    var session = new TropoSession();
 //    session.makeApiCall(token, {msg: 'This is a test message from Node.js.', number: '+18199950115'});
