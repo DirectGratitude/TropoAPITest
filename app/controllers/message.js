@@ -20,8 +20,10 @@ var MessageController = createController({
     tropo.call("+18199950115", null, null, null, null, null, "SMS", null, null, null);
     tropo.say("Tag, you're it!!");
 
+    var json = TropoJSON(tropo);
+
     var session = new TropoSession();
-    session.makeApiCall(token, TropoJSON(tropo));
+    session.makeApiCall(token, json.tropo);
 
     session.addListener('responseBody', function(response) {
       console.log(response);
