@@ -1,10 +1,13 @@
 var tropoWebAPI = require('tropo-webapi'),
-    tropoSession = require('tropo-webapi/lib/tropo-session'),
-    http = require('http'),
-    createController = require("../../libs/controllers").createController;
+  tropoSession = require('tropo-webapi/lib/tropo-session'),
+  http = require('http'),
+  createController = require("../../libs/controllers").createController;
 
 var MessageController = createController({
   Messages: null,
+
+  MessageToken: '11bc2ebce55e1142a9198cfc82c25475b653b08315c3a907eb3df8bf795be9cf4a25d4312290c409000555de',
+  CallToken: '11bc7291593c6a408b6ca416ff478f269056f8bd7d4656633a9b289f0426d22bcf72ae2edfb3fb71dd673e10',
 
   setup: function() {
     this.Messages = this.repositories.Messages;
@@ -12,28 +15,31 @@ var MessageController = createController({
 
   // /messages/new
   new: function(req, res) {
-    var token = '11ba4dbf1d1a694183a76675679242a27c9418e2bb4a68b274f4c7b0534adf54f7c7bc18fdee3c1d7fba9a1a';
+    var action = "message";
 
-    var tropo = new tropoWebAPI.TropoWebAPI();
+    // todo : add radio to form to chose between actions
+    // todo : fix sms (problems seems to be about outbound sms)
+    // todo : properly handle parameters and move this to send()
 
-    //to, answerOnMedia, channel, from, headers, name, network, recording, required, timeout
-    tropo.call("+18199950115", { network:"SMS"});
-    tropo.say("Don't forget your meeting at 2 p.m. on Wednesday!");
+    if (action == "message") {
+      var token = this.MessageToken;
+    } else if (action == "call") {
+      var token = this.CallToken;
+    }
 
-    var json = TropoJSON(tropo);
+    var session = new TropoSession();
+    session.makeApiCall(token, {
+      msg: 'This is a test message from Node.js.',
+      number: '12343526622'
+    });
 
-    res.json(json);
+    session.addListener('responseBody', function(response) {
+      console.log(response);
+    });
 
-//    var session = new TropoSession();
-//    session.makeApiCall(token, {msg: 'This is a test message from Node.js.', number: '+18199950115'});
-
-//    session.addListener('responseBody', function(response) {
-//      console.log(response);
-//    });
-
-//    res.render("messages/send", {
-//      title: "New message"
-//    });
+    res.render("messages/send", {
+      title: "New message"
+    });
   },
 
   // /messages/send
