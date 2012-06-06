@@ -27,6 +27,10 @@ var MessageController = createController({
       } else {
         console.log(message);
 
+        // todo: add lifestore vhost to nginx
+        // todo: finish setting up monit
+        // todo: checkout mmonit
+
         // todo : fix sms (problems seems to be about outbound sms)
         // todo : reselect action when form has errors
 
@@ -49,10 +53,10 @@ var MessageController = createController({
         });
 
         // if the Tropo API does not answer, we send a timeout message.
-        setTimeout(function () { 
-          that.messages.addMessage(req, "error", "Message has timed out. Please try again");
-          res.render("messages/send", { title: "New message", message: message });
-        }, 10000)
+//        setTimeout(function () { 
+//          that.messages.addMessage(req, "error", "Message has timed out. Please try again");
+//          res.render("messages/send", { title: "New message", message: message });
+//        }, 10000);
 
       }
     });
