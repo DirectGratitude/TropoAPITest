@@ -9,6 +9,6 @@ require("ncore/modules/core")({
         uri: __dirname
     },
     moduleLoader: {
-      skip: /test|public|node_modules|bin/
+      skip: /test|public|node_modules|bin|tropoListener.js/
     }
 });
