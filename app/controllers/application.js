@@ -4,7 +4,7 @@ var HomeController = createController({
   // /projects
   index: function(req, res) {
     // todo: checks for express 3 replacement?
-    res.render("index", { title: "ThinAir" });
+    res.render("index", { title: "TropoAPITest" });
   },
 
   // every 404

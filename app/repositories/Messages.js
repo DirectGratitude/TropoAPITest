@@ -1,5 +1,4 @@
-var strings = require("../../libs/helpers/strings"),
-    createRepository = require("../../libs/repositories").createRepository;
+var createRepository = require("../../libs/repositories").createRepository;
 
 var Messages = createRepository("messages", {
 

@@ -24,6 +24,7 @@ var MessageController = createController({
       } else {
 		// todo: api call here
         that.messages.addMessage(req, "success", "Message sent with success.");
+		res.redirect("/");
       }
 
       res.render("messages/send", {

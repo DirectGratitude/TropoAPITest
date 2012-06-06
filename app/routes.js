@@ -8,9 +8,10 @@ module.exports = {
     app.get("/", getAction(application, "index"));
 
 	// messages routes
+    app.get("/messages/send", getAction(message, "new"));
     app.post("/messages/send", getAction(message, "send"));
 
 	// catchall for errors
-    app.get('*', getAction(home, "error"));
+    app.get('*', getAction(application, "error"));
   }
 };
