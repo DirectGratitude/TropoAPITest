@@ -15,5 +15,8 @@ var server = http.createServer(function(request, response) {
         'Content-Type': 'application/json'
     });
 
-    response.end(tropowebapi.TropoJSON(tropo));
-}).listen(8000); // Listen on port 8000 for requests.
+    var r = tropowebapi.TropoJSON(tropo);
+    console.log(r);
+
+    response.end(r);
+}).listen(80); // Listen on port 8000 for requests.
