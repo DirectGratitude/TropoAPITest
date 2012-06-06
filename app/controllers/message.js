@@ -23,6 +23,10 @@ var MessageController = createController({
     var session = new TropoSession();
     session.makeApiCall(token, TropoJSON(tropo));
 
+    session.addListener('responseBody', function(response) {
+      console.log(response);
+    });
+
     res.render("messages/send", {
       title: "New message"
     });
