@@ -1,4 +1,5 @@
 var tropoWebAPI = require('tropo-webapi'),
+  tropoSession = require('tropo-webapi/tropo-session'),
   http = require('http'),
   createController = require("../../libs/controllers").createController;
 
@@ -11,28 +12,16 @@ var MessageController = createController({
 
   // /messages/new
   new: function(req, res) {
+    var token = '11ba4dbf1d1a694183a76675679242a27c9418e2bb4a68b274f4c7b0534adf54f7c7bc18fdee3c1d7fba9a1a';
+
     var tropo = new tropoWebAPI.TropoWebAPI();
 
     //to, answerOnMedia, channel, from, headers, name, network, recording, required, timeout
     tropo.call("+18199950115", null, null, null, null, null, "SMS", null, null, null);
     tropo.say("Tag, you're it!!");
 
-    console.log(TropoJSON(tropo));
-
-    var site = http.createClient(80, 'api.tropo.com');
-    var request = site.request("GET", "/1.0/sessions?action=create&token=11ba4dbf1d1a694183a76675679242a27c9418e2bb4a68b274f4c7b0534adf54f7c7bc18fdee3c1d7fba9a1a", {
-      'host': 'api.tropo.com'
-    });
-    request.end();
-
-    request.on('response', function(response) {
-      response.setEncoding('utf8');
-      console.log('STATUS: ' + response.statusCode);
-      response.on('data', function(chunk) {
-        console.log("DATA: " + chunk);
-      });
-    });
-
+    var session = new TropoSession();
+    session.makeApiCall(token, TropoJSON(tropo));
 
     res.render("messages/send", {
       title: "New message"
