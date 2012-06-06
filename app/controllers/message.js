@@ -25,6 +25,7 @@ var MessageController = createController({
         that.validator.addErrorsToMessages(req, validationErrors);
         res.render("messages/send", { title: "New message", message: message });
       } else {
+
         // todo : fix sms (problems seems to be about outbound sms)
         // todo : reselect action when form has errors
 
@@ -50,7 +51,7 @@ var MessageController = createController({
         setTimeout(function () { 
           that.messages.addMessage(req, "error", "Message has timed out. Please try again");
           res.render("messages/send", { title: "New message", message: message });
-        }, 30000);
+        }, 60000);
 
       }
     });
