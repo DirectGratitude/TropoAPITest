@@ -1,4 +1,13 @@
 [{
+  "firstName": [{
+    "minimumLength": 2
+  }],
+  "lastName": [{
+    "minimumLength": 2
+  }],
+  "phoneNumber": [{
+    "minimumLength": 11
+  }],
   "message": [{
     "minimumLength": 5
   }]

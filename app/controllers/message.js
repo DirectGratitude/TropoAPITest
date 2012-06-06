@@ -9,9 +9,9 @@ var MessageController = createController({
 
   // /messages/new
   new: function(req, res) {
-    res.render("messages/send", { 
-		title: "New message" }
-	);
+    res.render("messages/send", {
+      title: "New message"
+    });
   },
 
   // /messages/send
@@ -22,9 +22,9 @@ var MessageController = createController({
       if (validationErrors) {
         that.validator.addErrorsToMessages(req, validationErrors);
       } else {
-		// todo: api call here
+        // todo: api call here
         that.messages.addMessage(req, "success", "Message sent with success.");
-		res.redirect("/");
+        res.redirect("/");
       }
 
       res.render("messages/send", {
