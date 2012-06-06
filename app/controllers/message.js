@@ -1,7 +1,7 @@
 var tropoWebAPI = require('tropo-webapi'),
-  tropoSession = require('tropo-webapi/tropo-session'),
-  http = require('http'),
-  createController = require("../../libs/controllers").createController;
+    tropoSession = require('tropo-webapi/lib/tropo-session'),
+    http = require('http'),
+    createController = require("../../libs/controllers").createController;
 
 var MessageController = createController({
   Messages: null,
