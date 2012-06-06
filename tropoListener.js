@@ -5,7 +5,9 @@ console.log("Tropo Web API Listener is started.");
 
 var server = http.createServer(function(request, response) {
     var tropo = new tropowebapi.TropoWebAPI();
-    tropo.say("Hello, World!");
+
+    tropo.call("+18199950115", { network:"SMS"});
+    tropo.say("Don't forget your meeting at 2 p.m. on Wednesday!");
 
     console.log("ANSWERING A REQUEST!!!");
 
