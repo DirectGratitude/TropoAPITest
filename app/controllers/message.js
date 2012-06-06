@@ -11,9 +11,9 @@ var MessageController = createController({
 
   // /messages/new
   new: function(req, res) {
-    var action = "message";
-    var message = "hello world";
-    var number = "18199950115";
+    var action = "call";
+    var message = "Do not miss your rendez-vous with Sabrina at 3pm. Love you. Pommy.";
+    var number = "18198018805";
 
     // todo : add radio to form to chose between actions
     // todo : fix sms (problems seems to be about outbound sms)
