@@ -17,21 +17,25 @@ var MessageController = createController({
     var tropo = new tropoWebAPI.TropoWebAPI();
 
     //to, answerOnMedia, channel, from, headers, name, network, recording, required, timeout
-    tropo.call("+18199950115", null, null, null, null, null, "SMS", null, null, null);
-    tropo.say("Tag, you're it!!");
+    tropo.call("+18199950115", { network:"SMS"});
+    tropo.say("Don't forget your meeting at 2 p.m. on Wednesday!");
 
     var json = TropoJSON(tropo);
 
-    var session = new TropoSession();
-    session.makeApiCall(token, json.tropo);
 
-    session.addListener('responseBody', function(response) {
-      console.log(response);
-    });
+    res.json(json);
 
-    res.render("messages/send", {
-      title: "New message"
-    });
+
+//    var session = new TropoSession();
+//    session.makeApiCall(token, {msg: 'This is a test message from Node.js.', number: '+18199950115'});
+
+//    session.addListener('responseBody', function(response) {
+//      console.log(response);
+//    });
+
+//    res.render("messages/send", {
+//      title: "New message"
+//    });
   },
 
   // /messages/send
