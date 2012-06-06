@@ -28,6 +28,10 @@ var MessageController = createController({
 
         // todo : fix sms (problems seems to be about outbound sms)
         // todo : reselect action when form has errors
+        // todo : remove console.log's
+
+        console.log('Sending message...');
+        console.log(message);
 
         var session = new TropoSession();
 
@@ -43,6 +47,9 @@ var MessageController = createController({
 
         // reponse from Tropo API, sending success message
         session.addListener('responseBody', function(response) {
+          
+          console.log('Message sent with success');
+
           that.messages.addMessage(req, "success", "Message sent with success.");
           res.redirect("/");
         });
