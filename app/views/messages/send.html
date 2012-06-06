@@ -4,29 +4,45 @@
 
 <br />
 
-<form action="/messages/send", method="post">
-  <label for="message[firstName]">First Name</label>
-  <input type="text" name="message[firstName]" value="{{#if message}}{{message.firstName}}{{/if}}" />
+<form action="/messages/send" method="post" class="well">
+  <fieldset>
 
-  <br />
+    <div class="control-group">
+      <label class="control-label" for="message[firstName]">First Name</label>
+      <input type="text" id="message[firstName]" name="message[firstName]" value="{{#if message}}{{message.firstName}}{{/if}}" class="span3" />
+    </div>
 
-  <label for="message[lastName]">Last Name</label>
-  <input type="text" name="message[lastName]" value="{{#if message}}{{message.firstName}}{{/if}}" />
+    <div class="control-group">
+      <label class="control-label" for="message[lastName]">Last Name</label>
+      <input type="text" id="message[lastName]" name="message[lastName]" value="{{#if message}}{{message.firstName}}{{/if}}" class="span3" />
+    </div>
 
-  <br />
+    <div class="control-group">
+      <label class="control-label" for="message[phoneNumber]">Phone Number</label>
+      <input type="text" id="message[phoneNumber]" name="message[phoneNumber]" value="{{#if message}}{{message.phoneNumber}}{{/if}}" class="span3" />
+    </div>
 
-  <label for="message[phoneNumber]">Phone Number</label>
-  <input type="text" name="message[phoneNumber]" value="{{#if message}}{{message.phoneNumber}}{{/if}}" />
+    <div class="control-group">
+      <label class="control-label" for="message[action]">Message Type</label>
+      <div class="controls">
+        <select id="message[action]" name="message[action]">
+          <option value="call">Voice Call</option>
+          <option value="message">Text Message</option>
+        </select>
+      </div>
+    </div>
 
-  <br />
+    <div class="control-group">
+      <label class="control-label" for="message[message]">Message</label>
+      <textarea id="message[message]" name="message[message]" class="input-xlarge">{{#if message}}{{message.message}}{{/if}}</textarea>
+    </div>
 
-  <label for="message[message]">Message</label>
-  <textarea name="message[message]">{{#if message}}{{message.message}}{{/if}}</textarea>
+    <div class="control-group">
+      <span class="help-block">All fields are mandatory.</span>
+      <button class="btn btn-primary">Send Message</button>
+    </div>
 
-  <br />
-
-  <button class="btn btn-primary">Send</button>
-  <small>All fields are mandatory</small>
+  </fieldset>
 </form>
 
 {{> footer}}

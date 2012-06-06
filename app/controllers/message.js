@@ -15,7 +15,7 @@ var MessageController = createController({
     var message = "Do not miss your rendez-vous with Sabrina at 3pm. Love you. Pommy.";
     var number = "18198018805";
 
-    // todo : add radio to form to chose between actions
+    // todo : reselect action when form has errors
     // todo : fix sms (problems seems to be about outbound sms)
     // todo : properly handle parameters and move this to send()
 
@@ -26,7 +26,7 @@ var MessageController = createController({
     }
 
     var session = new TropoSession();
-    session.makeApiCall(token, { msg: message, number: number });
+    //session.makeApiCall(token, { msg: message, number: number });
 
     session.addListener('responseBody', function(response) {
       console.log(response);
